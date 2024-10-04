@@ -9,3 +9,57 @@ Pasos para crear un proyecto con git:
 	2.- Crear el repositorio con git init.
 	3.- Crear repositorio en github.
 	4.- Configurar repositorios remotos.
+
+
+Comandos git:
+	git add <nombre> -> Añade al seguimiento el elemento <nombre>.
+		Ejemplo: git add README.md
+			Posibilidades:
+				git add *.txt -> Añade todos los archivos .txt del directorio donde estemos, pero no añade los archivos .txt que esten en subdirectorios ni los archivos .txt que estén en directorios padres.
+				git add */*.txt -> Añade todos los archivos .txt que estén en cualquier directorio.
+				git add Directorio/\*txt -> Añade todos los archivos .txt del directorio Directorio y de todos sus subdirectorios.
+
+	git commit -> Registra los cambios en el repositorio.
+
+	git merche <nombre> -> Une la rama con nombre <nombre> a la rama en la que estemos, normalmente hacemos merge a la rama principal, pero puede ser cualquier otra en la que estemos.
+				Lo que hace git merge es modificar comparar los archivos que compartan las dos ramas en su ancestro común y añade la modificación de esos archivos.
+		Ejemplo: git merge newBranch
+
+	git rebase <nombre> -> Selecciona el conjunto de commits de la rama en la que estemos y los "copia" en la rama <nombre>. De esta forma tendremos una secuencia lineal de commits.
+				Si estamos en una rama que es ancestro directo de la rama <nombre> , git moverá la referencia de la rama en la que estamos hacia adelante hasta el último commit de la rama <nombre>.
+		Ejemplo: git rebase main
+
+	Antes de continuar, expliquemos el concepto de HEAD:
+		HEAD es el nombre simbólico del commit sobre el que hemos hecho checkout.
+		HEAD siempre apunta al commit más reciente reflejado en el árbol de commits.
+
+	git log -> Muestra el historial de commits con sus hashes correspondientes.
+
+	Referencias relativas: Con las referencias relativos podremos movernos cómodamente entre los commits desde un punto.
+		git checkout HEAD^ nos mueve un commit hacia atrás de HEAD, git chcekout HEAD^^ nos mueve dos commit hacia atrás de HEAD, y así sucesivamente.
+		git checkout HEAD~<num> nos mueve <num> veces hacia atrás de HEAD.
+			Ejemplo: git checkout HEAD~3
+		Puedes utilizar las referencias relativas desde cualquier lugar.
+
+	git branch <nombre> -> Crea una rama con el nombre <nombre>.
+		Ejemplo: git branch newBranch
+
+	git branch -f <nombre> <referencia relativa> -> Mueve forzadamente la rama <nombre> a la posición marcada por la referencia relativa <referencia relativa>.
+		Ejemplo: git branch -f main HEAD~3
+
+	git checkout <nombre> -> Nos situa en la rama o en el commit con el nombre <nombre>. Para situarnos en el commit en nombre tenemos que poner el hash del commit.
+		Ejemplo: git checkout newBranch
+
+	git checkout -b <nombre> -> Crea una nueva rama con el nombre <nombre> y nos sitúa en ella. Es igual que hacer git branch <nombre> y luego hacer git checkout <nombre>, pero en un único comando.
+		Ejemplo: git checkout -b newBranch
+
+	git reset <commit al que queremos volver> -> Deshace los cambios en local.
+		Ejemplo: git reset HEAD~1
+
+	git revert <commit que queremos revertir> -> Revierte los cambios en remoto pero no los sube, para subirlos habría que hacer git push.
+		Ejemplo: git revert HEAD
+
+	git cherry-pick <commit1> <commit2> <...> -> Copia los commits indicados sobre la ubicación actual.
+		Ejemplo: git cherry-pick C1 C3
+
+	git rebase -i -> Git abre una UI y te muestra la cantidad de commits a ser copiados.
