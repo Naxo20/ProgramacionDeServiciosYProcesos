@@ -1,0 +1,11 @@
+Usamos git status para ver el estado en el que estamos. Entre la información que nos da git se encuentra:
+	1.- La rama en la que estamos.
+	2.- Los elementos (ficheros, carpetas, ...) que tenemos con o sin seguimiento (si la hemos añadido o no con git add).
+	3.- Los commit que hemos hecho.
+
+Pasos para crear un proyecto con git:
+
+	1.- Crear Proyecto.
+	2.- Crear el repositorio con git init.
+	3.- Crear repositorio en github.
+	4.- Configurar repositorios remotos.
