@@ -12,6 +12,7 @@ Pasos para crear un proyecto con git:
 
 
 Comandos git:
+	Ejercicios de git y explicación de comandos: https://learngitbranching.js.org/?locale=es_ES
 	git add <nombre> -> Añade al seguimiento el elemento <nombre>.
 		Ejemplo: git add README.md
 			Posibilidades:
@@ -21,7 +22,7 @@ Comandos git:
 
 	git commit -> Registra los cambios en el repositorio.
 
-	git merche <nombre> -> Une la rama con nombre <nombre> a la rama en la que estemos, normalmente hacemos merge a la rama principal, pero puede ser cualquier otra en la que estemos.
+	git merge <nombre> -> Une la rama con nombre <nombre> a la rama en la que estemos, normalmente hacemos merge a la rama principal, pero puede ser cualquier otra en la que estemos.
 				Lo que hace git merge es modificar comparar los archivos que compartan las dos ramas en su ancestro común y añade la modificación de esos archivos.
 		Ejemplo: git merge newBranch
 
@@ -63,3 +64,11 @@ Comandos git:
 		Ejemplo: git cherry-pick C1 C3
 
 	git rebase -i -> Git abre una UI y te muestra la cantidad de commits a ser copiados.
+		Ejemplo: git rebase -i HEAD~4
+		Luego ya elijes qué commits y su orden.
+
+	git tag <marca> <commit> -> Crea una marca llamada <marca> en el commit <commit>.
+		Ejemplo: git tag v1 C1
+
+	git describe <ref> -> Muestra a cuántos commits de distancia estas de la referencia <ref> más cercana, si no indicas nada git utilizará el commit más cercano (HEAD). La salida se muestra así: <tag>_<numCommits>_g<hash>, siendo <tag> el tag más cercano, <numCommits> el número de commits de distancia y <hash> el hash del commit.
+		Ejemplo: git describe main
